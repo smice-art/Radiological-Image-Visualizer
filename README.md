@@ -9,7 +9,7 @@
 By Claudio - https://superhivemarket.com/creators/smice - License: GPL-3.0-or-later
 
 # Screen Shot
-![Banner Image](images/01.jpg)
+![Banner Image](images/RIF.jpg)
 
 ## 1. What it does
 
