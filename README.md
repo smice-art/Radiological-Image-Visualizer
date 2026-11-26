@@ -5,8 +5,10 @@
 # Radiological Image Visualizer (RIV) - User Guide
 
 *Blender add-on, version 1.0.0 - explore CT and MRI series in 3D*
-
 By Claudio - https://superhivemarket.com/creators/smice - License: GPL-3.0-or-later
+
+# Info ⚠️
+This is NOT a medical device and it is NOT intended for diagnosis or treatment decisions. 
 
 # Screen Shot
 ![Banner Image](images/RIF.jpg)
