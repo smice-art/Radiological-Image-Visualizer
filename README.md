@@ -1,20 +1,12 @@
+<p align="center">
+  <img src="images/addon.jpg" alt="K-Noid Generator width="100%">
+</p>
+
 # Radiological Image Visualizer (RIV) - User Guide
 
-*Blender add-on, version 1.0.0 - explore CT and MRI series in 3D*
-<<<<<<< HEAD
-By Claudio https://github.com/smice-art/Radiological-Image-Visualizer/ License: GPL-3.0-or-later
-
-# Info ⚠️
-This is NOT a medical device and it is NOT intended for diagnosis or treatment decisions. 
-=======
+*Blender add-on, version 1.0.1 - explore CT and MRI series in 3D*
 By Claudio - https://superhivemarket.com/creators/smice - License: GPL-3.0-or-later
->>>>>>> 70ce584855e92d1193dd0183c72cee8245c94064
-
-# Info ⚠️
-This is NOT a medical device and it is NOT intended for diagnosis or treatment decisions. 
-
-# Screen Shot
-![Banner Image](images/RIF.jpg)
+**Disclaimer:** ⚠️ This add-on is a visualization tool for education, art and personal interest. It is not a medical device and must not be used for diagnosis or treatment.
 
 ## 1. What it does
 
@@ -34,7 +26,7 @@ Use the planes for detail and the mesh or volume for spatial navigation.
 
 1. In Blender open **Edit > Preferences > Get Extensions**.
 2. Click the arrow menu at the top right and choose **Install from Disk...**
-3. Select the downloaded zip file for your system (for example `radiological_image_visualizer-1.0.0-windows_x64.zip`) and confirm. An installed older version is replaced; restart Blender afterwards so the new code is loaded cleanly.
+3. Select the downloaded zip file for your system (for example `radiological_image_visualizer-1.0.1-windows_x64.zip`) and confirm. An installed older version is replaced; restart Blender afterwards so the new code is loaded cleanly.
 4. Open the 3D Viewport, press `N` for the sidebar and open the **RIV** tab.
 
 At the top of the panel is the medical disclaimer and the status of the loaded volume. Below it come the sections: Cameras, 1. Load Data, 2. Slice Planes, 3. Surface Mesh, 4. Display (with Transfer Function), 5. 2D Images and About. Click the small arrow in front of a section title to fold it; Blender remembers which sections are open. Ctrl+click on an arrow folds all other sections. Sections that need a loaded volume (Cameras, 2-4) only appear after **Load Series**; *5. 2D Images* only appears when 2D images were found or imported. **Remove** sits at the end of *1. Load Data*; *About* shows version, author and website, with buttons for the source code and for reporting a bug.
@@ -262,8 +254,7 @@ Approximate values; they vary with scanner, protocol and contrast agent.
 | Metal, dental fillings | above 2000 (may saturate) |
 
 
-
-## 8. Limitations of version 1.0.0
+## F1. Limitations of version 1.0.1
 
 - Multi-frame (enhanced) DICOM files are skipped.
 - Compressed DICOM is decoded on Windows x64, macOS Apple Silicon, macOS Intel (up to Blender 5.0) and Linux x64. Other systems need uncompressed data.
@@ -273,29 +264,13 @@ Approximate values; they vary with scanner, protocol and contrast agent.
 - Islands removes small loose parts automatically; large pieces such as the scanner table may remain. Use Loose Parts to clean up.
 - The interface blocks briefly during loading and mesh creation.
 
-## 9. Privacy and disclaimer
+## F2. Privacy and disclaimer
 
 - The add-on does not store patient names, IDs or dates in the .blend file. Only the series description is shown in the list.
 - The chosen folder path is stored in the .blend file and can contain names. Clear the Folder field before sharing a file.
 - **This is a visualization tool. It is not a medical device and must not be used for diagnosis or treatment decisions.**
 
-## 10. Reference: typical Hounsfield values (CT)
-
-Approximate values; they vary with scanner, protocol and contrast agent.
-
-| Material | HU |
-|---|---|
-| Air | -1000 |
-| Lung tissue | -900 to -500 |
-| Fat | -120 to -60 |
-| Water | 0 |
-| Blood, soft tissue, muscle | 30 to 80 |
-| Contrast-filled vessels | 150 to 400 |
-| Spongy bone | 200 to 400 |
-| Dense cortical bone | 500 to 1500 and above |
-| Metal, dental fillings | above 2000 (may saturate) |
-
-## 11. License and credits
+## F3. License and credits
 
 - Radiological Image Visualizer by Claudio - https://superhivemarket.com/creators/smice
 - Source code: https://github.com/smice-art/Radiological-Image-Visualizer
