@@ -1,4 +1,67 @@
+# Radiological Image Visualizer (RIV) - User Guide
 
+*Blender add-on, version 1.0.1 - explore CT and MRI series in 3D*
+
+By Claudio - https://superhivemarket.com/creators/smice - License: GPL-3.0-or-later
+
+**Disclaimer:** ⚠️ This add-on is a visualization tool for education, art and personal interest. It is not a medical device and must not be used for diagnosis or treatment.
+
+## 1. What it does
+
+Radiological Image Visualizer (short: RIV) reads a folder of DICOM files (CT or MRI), builds a 3D volume from the slices, and shows it inside Blender in complementary ways that share the same 3D space:
+
+- **Slice planes**: three movable planes (axial, coronal, sagittal) that show the original image data without any loss, with adjustable window/level.
+- **Surface mesh**: a smooth 3D model of a tissue (for example bone, skin or contrast-filled vessels) created at a threshold you choose. You can orbit around it, fly through it, cut it, render it and animate it like any other Blender object.
+- **Display modes**: switch between *Surface* (solid meshes), *Glass* (see-through X-ray look of the meshes) and *Volume* (true semi-transparent volume rendering of the scan data, no mesh needed).
+- **2D images**: single pictures such as X-rays (DX/CR), which have no slices and cannot become 3D, can be placed as image planes in real size.
+
+Use the planes for detail and the mesh or volume for spatial navigation.
+
+## 2. Requirements and installation
+
+- Blender 4.2 or newer. Tested with 4.2 LTS, 4.3, 4.4, 4.5 LTS, 5.1, 5.2 LTS and 5.3 alpha.
+- Nothing else to install: the DICOM reader (pydicom) and the decoders for compressed DICOM (pylibjpeg with libjpeg and OpenJPEG) are bundled, and Blender installs the right ones for your system. Decoders are included for Windows x64, macOS Apple Silicon, macOS Intel (Blender 4.2-5.0) and Linux x64. On Windows ARM only uncompressed DICOM can be read.
+
+**From the Blender Extensions platform:** in Blender open **Edit > Preferences > Get Extensions**, search for *Radiological Image Visualizer* and click **Install**. Blender picks the right package for your system and keeps it up to date.
+
+**From this repository:**
+
+1. Download `radiological_image_visualizer-1.0.1.zip` from the [Releases](https://github.com/smice-art/Radiological-Image-Visualizer/releases) page. This one file works on all systems.
+2. In Blender open **Edit > Preferences > Get Extensions**.
+3. Click the arrow menu at the top right and choose **Install from Disk...**
+4. Select the downloaded zip file and confirm. An installed older version is replaced; restart Blender afterwards so the new code is loaded cleanly.
+5. Open the 3D Viewport, press `N` for the sidebar and open the **RIV** tab.
+
+At the top of the panel is the medical disclaimer and the status of the loaded volume. Below it come the sections: Cameras, 1. Load Data, 2. Slice Planes, 3. Surface Mesh, 4. Display (with Transfer Function), 5. 2D Images and About. Click the small arrow in front of a section title to fold it; Blender remembers which sections are open. Ctrl+click on an arrow folds all other sections. Sections that need a loaded volume (Cameras, 2-4) only appear after **Load Series**; *5. 2D Images* only appears when 2D images were found or imported. **Remove** sits at the end of *1. Load Data*; *About* shows version, author and website, with buttons for the source code and for reporting a bug.
+
+## 3. Quick start
+
+1. Choose the folder that contains the DICOM files and click **Scan Folder**. Subfolders are searched too.
+2. Select a series in the list. Each entry shows series number, description, modality, slice count, image size and slice spacing (dz).
+3. Click **Load Series**. Three slice planes appear in the 3D view, centred at the origin and scaled to real size, plus three cameras looking along X, Y and Z.
+4. Move the **Axial**, **Coronal** and **Sagittal** sliders and adjust **Level** and **Window** until the image looks right.
+5. Pick a **Tissue** preset or set a **Threshold**, then click **Create Mesh**. The default smoothing gives a clean surface.
+6. Hide or delete the planes if you only want the mesh, or keep both and cut through the mesh with the planes.
+7. Optional: under **4. Display** switch to **Glass** or **Volume**.
+
+The model is placed in DICOM patient coordinates: head toward +Z, patient looking toward -Y. For a standard supine scan, Numpad 1 (Front view) shows the patient from the front.
+
+## 4. Controls reference
+
+### 4.1 Load data
+
+| Control | What it does |
+|---|---|
+| **Folder** | Folder with the DICOM files. Note: the path is stored in the .blend file and may contain names. |
+| **Subfolders** | Also search all subfolders. |
+| **Scan Folder** | Reads only the file headers (fast) and lists all series with at least 2 slices. Compressed series show their format at the end of the entry (JPEG, JPEG-LS, JPEG2000, RLE), and a line below the list tells whether a decoder is available. |
+| **Load Reduction** | Shrinks the volume while loading: 1 = full detail, 2 = 1/8 of the voxels, 3 = 1/27, 4 = 1/64. Saves memory and speeds up everything. Affects slice images and mesh. |
+| **Scale** | Blender units per millimetre. 0.001 = real size with scene unit metres. 0.01 = 10x larger, 1 = 1000x larger. Takes effect on the next load. |
+| **Set Color Management to 'Standard'** | Sets the scene view transform to Standard so slice images show unaltered grey values (AgX and Filmic change them). |
+| **Load Series** | Reads the selected series and creates the three slice planes. |
+| **Remove** | Frees the loaded volume from memory and deletes everything the add-on created (planes, meshes, volume object and its .vdb file, cameras, 2D image planes, RIV_Light). |
+
+### 4.1b Cameras
 
 **Load Series** also creates three cameras framed on the volume. The **Camera** field (click the arrows or drag) switches between them; the chosen one becomes the scene camera and the viewport looks through it.
 
