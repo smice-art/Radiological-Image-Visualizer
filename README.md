@@ -1,11 +1,13 @@
 <p align="center">
-  <img src="images/addon.jpg" alt="K-Noid Generator width="100%">
+  <img src="images/addon.jpg" alt="Radiological Image Visualizer" width="100%">
 </p>
 
 # Radiological Image Visualizer (RIV) - User Guide
 
 *Blender add-on, version 1.0.1 - explore CT and MRI series in 3D*
+
 By Claudio - https://superhivemarket.com/creators/smice - License: GPL-3.0-or-later
+
 **Disclaimer:** ⚠️ This add-on is a visualization tool for education, art and personal interest. It is not a medical device and must not be used for diagnosis or treatment.
 
 ## 1. What it does
@@ -21,13 +23,18 @@ Use the planes for detail and the mesh or volume for spatial navigation.
 
 ## 2. Requirements and installation
 
-- Blender 4.2 or newer. Tested with 4.2 LTS, 4.3, 4.4, 4.5 LTS, 5.1 and 5.2.
-- Nothing else to install: the DICOM reader (pydicom) and the decoders for compressed DICOM (pylibjpeg with libjpeg and OpenJPEG) are bundled. There is one package per system (Windows x64, Windows ARM, macOS Apple Silicon, macOS Intel, Linux x64); when you install from Blender's extension platform, Blender picks the right one. Decoders are included for Windows x64, macOS Apple Silicon, macOS Intel (Blender 4.2-5.0) and Linux x64. On Windows ARM only uncompressed DICOM can be read.
+- Blender 4.2 or newer. Tested with 4.2 LTS, 4.3, 4.4, 4.5 LTS, 5.1, 5.2 LTS and 5.3 alpha.
+- Nothing else to install: the DICOM reader (pydicom) and the decoders for compressed DICOM (pylibjpeg with libjpeg and OpenJPEG) are bundled, and Blender installs the right ones for your system. Decoders are included for Windows x64, macOS Apple Silicon, macOS Intel (Blender 4.2-5.0) and Linux x64. On Windows ARM only uncompressed DICOM can be read.
 
-1. In Blender open **Edit > Preferences > Get Extensions**.
-2. Click the arrow menu at the top right and choose **Install from Disk...**
-3. Select the downloaded zip file for your system (for example `radiological_image_visualizer-1.0.1-windows_x64.zip`) and confirm. An installed older version is replaced; restart Blender afterwards so the new code is loaded cleanly.
-4. Open the 3D Viewport, press `N` for the sidebar and open the **RIV** tab.
+**From the Blender Extensions platform:** in Blender open **Edit > Preferences > Get Extensions**, search for *Radiological Image Visualizer* and click **Install**. Blender picks the right package for your system and keeps it up to date.
+
+**From this repository:**
+
+1. Download `radiological_image_visualizer-1.0.1.zip` from the [Releases](https://github.com/smice-art/Radiological-Image-Visualizer/releases) page. This one file works on all systems.
+2. In Blender open **Edit > Preferences > Get Extensions**.
+3. Click the arrow menu at the top right and choose **Install from Disk...**
+4. Select the downloaded zip file and confirm. An installed older version is replaced; restart Blender afterwards so the new code is loaded cleanly.
+5. Open the 3D Viewport, press `N` for the sidebar and open the **RIV** tab.
 
 At the top of the panel is the medical disclaimer and the status of the loaded volume. Below it come the sections: Cameras, 1. Load Data, 2. Slice Planes, 3. Surface Mesh, 4. Display (with Transfer Function), 5. 2D Images and About. Click the small arrow in front of a section title to fold it; Blender remembers which sections are open. Ctrl+click on an arrow folds all other sections. Sections that need a loaded volume (Cameras, 2-4) only appear after **Load Series**; *5. 2D Images* only appears when 2D images were found or imported. **Remove** sits at the end of *1. Load Data*; *About* shows version, author and website, with buttons for the source code and for reporting a bug.
 
@@ -276,5 +283,5 @@ Approximate values; they vary with scanner, protocol and contrast agent.
 - Source code: https://github.com/smice-art/Radiological-Image-Visualizer
 - Bug reports and support: https://github.com/smice-art/Radiological-Image-Visualizer/issues
 - License: GNU General Public License v3.0 or later (GPL-3.0-or-later), see the file `LICENSE`.
-- Bundled third-party packages (pydicom, pylibjpeg, pylibjpeg-libjpeg, pylibjpeg-openjpeg) and their licenses are listed in `THIRD_PARTY_LICENSES.md`.
+- Bundled third-party packages (pydicom, pylibjpeg, pylibjpeg-libjpeg, pylibjpeg-openjpeg) and their licenses are listed in [`source/THIRD_PARTY_LICENSES.md`](source/THIRD_PARTY_LICENSES.md).
 - DICOM® is the registered trademark of the National Electrical Manufacturers Association (NEMA) for its standards publications relating to digital communications of medical information. This project is not affiliated with or endorsed by NEMA.
