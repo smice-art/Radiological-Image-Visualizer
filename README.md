@@ -1,12 +1,10 @@
-<p align="center">
-  <img src="images/addon.jpg" alt="Reverse Baking Banner" width="100%">
-</p>
-
 # Radiological Image Visualizer (RIV) - User Guide
 
 *Blender add-on, version 1.0.0 - explore CT and MRI series in 3D*
+By Claudio https://github.com/smice-art/Radiological-Image-Visualizer/ License: GPL-3.0-or-later
 
-By Claudio - https://superhivemarket.com/creators/smice - License: GPL-3.0-or-later
+# Info ⚠️
+This is NOT a medical device and it is NOT intended for diagnosis or treatment decisions. 
 
 # Screen Shot
 ![Banner Image](images/01.jpg)
@@ -24,15 +22,15 @@ Use the planes for detail and the mesh or volume for spatial navigation.
 
 ## 2. Requirements and installation
 
-- Blender 4.2 or newer. Tested with 4.5 LTS and 5.0.
-- Nothing else to install: the DICOM reader (pydicom) and the decoders for compressed DICOM (pylibjpeg with libjpeg and OpenJPEG) are bundled. Blender installs the right ones for your system: Windows x64, macOS Apple Silicon, macOS Intel (Blender 4.2-5.0) and Linux x64, for Blender 4.2-5.0 (Python 3.11) and 5.1+ (Python 3.13).
+- Blender 4.2 or newer. Tested with 4.2 LTS, 4.3, 4.4, 4.5 LTS, 5.1 and 5.2.
+- Nothing else to install: the DICOM reader (pydicom) and the decoders for compressed DICOM (pylibjpeg with libjpeg and OpenJPEG) are bundled. There is one package per system (Windows x64, Windows ARM, macOS Apple Silicon, macOS Intel, Linux x64); when you install from Blender's extension platform, Blender picks the right one. Decoders are included for Windows x64, macOS Apple Silicon, macOS Intel (Blender 4.2-5.0) and Linux x64. On Windows ARM only uncompressed DICOM can be read.
 
 1. In Blender open **Edit > Preferences > Get Extensions**.
 2. Click the arrow menu at the top right and choose **Install from Disk...**
-3. Select the downloaded `radiological_image_visualizer-1.0.0` zip file and confirm. An installed older version is replaced; restart Blender afterwards so the new code is loaded cleanly.
+3. Select the downloaded zip file for your system (for example `radiological_image_visualizer-1.0.0-windows_x64.zip`) and confirm. An installed older version is replaced; restart Blender afterwards so the new code is loaded cleanly.
 4. Open the 3D Viewport, press `N` for the sidebar and open the **RIV** tab.
 
-At the top of the panel is the medical disclaimer and the status of the loaded volume. Below it come the sections: Cameras, 1. Load Data, 2. Slice Planes, 3. Surface Mesh, 4. Display (with Transfer Function), 5. 2D Images and About. Click the small arrow in front of a section title to fold it; Blender remembers which sections are open. Ctrl+click on an arrow folds all other sections. Sections that need a loaded volume (Cameras, 2-4) only appear after **Load Series**; *5. 2D Images* only appears when 2D images were found or imported. **Remove** sits at the end of *1. Load Data*; *About* shows version, author and website.
+At the top of the panel is the medical disclaimer and the status of the loaded volume. Below it come the sections: Cameras, 1. Load Data, 2. Slice Planes, 3. Surface Mesh, 4. Display (with Transfer Function), 5. 2D Images and About. Click the small arrow in front of a section title to fold it; Blender remembers which sections are open. Ctrl+click on an arrow folds all other sections. Sections that need a loaded volume (Cameras, 2-4) only appear after **Load Series**; *5. 2D Images* only appears when 2D images were found or imported. **Remove** sits at the end of *1. Load Data*; *About* shows version, author and website, with buttons for the source code and for reporting a bug.
 
 ## 3. Quick start
 
@@ -240,6 +238,24 @@ X-rays (modality DX or CR), mammograms and similar pictures are single 2D projec
 | Warning: gantry tilt | Slices are stacked at an angle. The add-on shows the volume sheared, which is geometrically correct. |
 | Warning: slices ignored at identical position | The series contains several phases or echoes at the same location. Only the first slice per position is used. |
 
+## 8. Reference: typical Hounsfield values (CT)
+
+Approximate values; they vary with scanner, protocol and contrast agent.
+
+| Material | HU |
+|---|---|
+| Air | -1000 |
+| Lung tissue | -900 to -500 |
+| Fat | -120 to -60 |
+| Water | 0 |
+| Blood, soft tissue, muscle | 30 to 80 |
+| Contrast-filled vessels | 150 to 400 |
+| Spongy bone | 200 to 400 |
+| Dense cortical bone | 500 to 1500 and above |
+| Metal, dental fillings | above 2000 (may saturate) |
+
+
+
 ## 8. Limitations of version 1.0.0
 
 - Multi-frame (enhanced) DICOM files are skipped.
@@ -275,6 +291,8 @@ Approximate values; they vary with scanner, protocol and contrast agent.
 ## 11. License and credits
 
 - Radiological Image Visualizer by Claudio - https://superhivemarket.com/creators/smice
+- Source code: https://github.com/smice-art/Radiological-Image-Visualizer
+- Bug reports and support: https://github.com/smice-art/Radiological-Image-Visualizer/issues
 - License: GNU General Public License v3.0 or later (GPL-3.0-or-later), see the file `LICENSE`.
 - Bundled third-party packages (pydicom, pylibjpeg, pylibjpeg-libjpeg, pylibjpeg-openjpeg) and their licenses are listed in `THIRD_PARTY_LICENSES.md`.
 - DICOM® is the registered trademark of the National Electrical Manufacturers Association (NEMA) for its standards publications relating to digital communications of medical information. This project is not affiliated with or endorsed by NEMA.
