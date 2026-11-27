@@ -1,1 +1,16 @@
+# Python
+__pycache__/
+*.py[cod]
+
+# Blender
+*.blend1
+*.blend2
+riv_cache/
+
+# Build output
+build/
+*.zip
+
+# System
 .DS_Store
+Thumbs.db
